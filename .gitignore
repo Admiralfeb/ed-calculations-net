@@ -3,6 +3,8 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+!.vscode
+
 # User-specific files
 *.rsuser
 *.suo
@@ -148,6 +150,8 @@ _TeamCity*
 coverage*.json
 coverage*.xml
 coverage*.info
+
+coverage
 
 # Visual Studio code coverage results
 *.coverage

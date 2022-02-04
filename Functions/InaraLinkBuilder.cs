@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 namespace EDCalculations.Functions;
 
 public static class InaraLinkBuilder
@@ -18,6 +20,12 @@ public static class InaraLinkBuilder
 
     public static string BuildFleetCarrierSearchString(string carrierId)
     {
+        Regex carrierExp = new Regex(@"^[A-Z0-9]{3}-[A-Z0-9]{3}$");
+        if (!carrierExp.IsMatch(carrierId.ToUpper()))
+        {
+            throw new ArgumentException("CarrierId must be in format '###-###' where # is a letter or number");
+        }
+
         string searchParam = Uri.EscapeDataString(carrierId);
         return $"{inaraBaseUrl}/station/?search={searchParam}";
     }
@@ -28,12 +36,4 @@ public static class InaraLinkBuilder
         return $"{inaraBaseUrl}/minorfaction/?search={searchParam}";
     }
 
-}
-
-public enum SearchType
-{
-    System,
-    Station,
-    FleetCarrier,
-    MinorFaction
 }
