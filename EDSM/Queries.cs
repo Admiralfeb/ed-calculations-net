@@ -6,7 +6,7 @@ namespace EDCalculations.EDSM;
 public static class Queries
 {
     static readonly HttpClient client = new HttpClient();
-    public static async Task<SystemBodies> GetBodiesInSystem(string systemName)
+    public static async Task<SystemBodies> GetBodiesInSystemAsync(string systemName)
     {
         const string apiURL = "https://www.edsm.net/api-system-v1/bodies";
         var builder = new UriBuilder(apiURL);
@@ -24,7 +24,7 @@ public static class Queries
             throw new Exception("Not found");
     }
 
-    public static async Task<SystemFactionInfo> GetFactionsInSystem(string systemName)
+    public static async Task<SystemFactionInfo> GetFactionsInSystemAsync(string systemName)
     {
         const string apiURL = "https://www.edsm.net/api-system-v1/factions";
         var builder = new UriBuilder(apiURL);
@@ -42,7 +42,7 @@ public static class Queries
             throw new Exception("Not found");
     }
 
-    public static async Task<SystemStations> GetStationsInSystem(string systemName)
+    public static async Task<SystemStations> GetStationsInSystemAsync(string systemName)
     {
         const string apiURL = "https://www.edsm.net/api-system-v1/stations";
         var builder = new UriBuilder(apiURL);
@@ -60,7 +60,7 @@ public static class Queries
             throw new Exception("Not found");
     }
 
-    public static async Task<IEnumerable<SphereSystem>> GetSystemsinSphere(string systemName, int distance)
+    public static async Task<IEnumerable<SphereSystem>> GetSystemsinSphereAsync(string systemName, int distance)
     {
         const string apiURL = "https://www.edsm.net/api-system-v1/factionss";
         var builder = new UriBuilder(apiURL);
