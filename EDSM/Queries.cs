@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 using System.Web;
 
 namespace EDCalculations.EDSM;
-public static class Queries
+public class Queries
 {
     static readonly HttpClient client = new HttpClient();
     public static async Task<SystemBodies> GetBodiesInSystemAsync(string systemName)

@@ -2,16 +2,16 @@ namespace EDCalculations.EDSM.Models;
 
 public class SystemBodies
 {
-    int id;
-    string name;
-    SystemBody[] bodies;
+    public int id;
+    public string name;
+    public SystemBody[] bodies;
 }
 
 public class SystemBody
 {
-    int id;
-    string name;
-    string type;
-    string subType;
-    object[]? rings;
+    public int id;
+    public string name;
+    public string type;
+    public string subType;
+    public object[]? rings;
 }
