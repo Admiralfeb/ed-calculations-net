@@ -2,51 +2,51 @@ namespace EDCalculations.EDSM.Models;
 
 public class SystemStations
 {
-    public int id;
-    public int id64;
-    public string url;
-    public string name;
-    public Station[] stations;
+    public int id { get; set; }
+    public int id64 { get; set; }
+    public string url { get; set; }
+    public string name { get; set; }
+    public Station[] stations { get; set; }
 }
 
 public class Station
 {
-    public int id;
-    public int markedId;
-    public string type;
-    public string name;
-    public StationBody? body;
-    public double distanceToArrival;
-    public string allegiance;
-    public string government;
-    public string economy;
-    public string secondEconomy;
-    public bool haveMarket;
-    public bool haveShipyard;
-    public bool haveOutfitting;
-    public string[] otherServices;
-    public StationControllingFaction? controllingFaction;
+    public int id { get; set; }
+    public int markedId { get; set; }
+    public string type { get; set; }
+    public string name { get; set; }
+    public StationBody? body { get; set; }
+    public double distanceToArrival { get; set; }
+    public string allegiance { get; set; }
+    public string government { get; set; }
+    public string economy { get; set; }
+    public string secondEconomy { get; set; }
+    public bool haveMarket { get; set; }
+    public bool haveShipyard { get; set; }
+    public bool haveOutfitting { get; set; }
+    public string[] otherServices { get; set; }
+    public StationControllingFaction? controllingFaction { get; set; }
     public StationUpdateTime updateTime;
 }
 
 public class StationBody
 {
-    public int id;
-    public string name;
-    public double? latitude;
-    public double? longitude;
+    public int id { get; set; }
+    public string name { get; set; }
+    public double? latitude { get; set; }
+    public double? longitude { get; set; }
 }
 
 public class StationControllingFaction
 {
-    public int id;
-    public string name;
+    public int id { get; set; }
+    public string name { get; set; }
 }
 
 public class StationUpdateTime
 {
-    public string information;
-    public string market;
-    public string shipyard;
-    public string outfitting;
+    public string information { get; set; }
+    public string market { get; set; }
+    public string shipyard { get; set; }
+    public string outfitting { get; set; }
 }

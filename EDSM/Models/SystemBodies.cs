@@ -2,16 +2,17 @@ namespace EDCalculations.EDSM.Models;
 
 public class SystemBodies
 {
-    public int id;
-    public string name;
-    public SystemBody[] bodies;
+    public int id { get; set; }
+    public string name { get; set; }
+    public SystemBody[] bodies { get; set; }
 }
 
 public class SystemBody
 {
-    public int id;
-    public string name;
-    public string type;
-    public string subType;
-    public object[]? rings;
+    public int id { get; set; }
+    public string name { get; set; }
+    public string type { get; set; }
+    public string subType { get; set; }
+    // At this time, ring data is not needed beyond knowing that they exist, thus no specific type beyond object.
+    public object[]? rings { get; set; }
 }

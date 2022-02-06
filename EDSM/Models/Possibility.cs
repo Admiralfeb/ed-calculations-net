@@ -1,11 +1,10 @@
 namespace EDCalculations.EDSM.Models;
 
-[Serializable]
 public class Possibility
 {
-    public string SystemName;
-    public int Distance;
-    public IEnumerable<string> MissionSystems;
+    public string SystemName { get; set; }
+    public int Distance { get; set; }
+    public IEnumerable<string> MissionSystems { get; set; }
 
     public Possibility(string systemName, int distance, IEnumerable<string> missionSystems)
     {

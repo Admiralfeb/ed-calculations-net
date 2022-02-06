@@ -4,12 +4,18 @@ using EDCalculations.EDSM.Models;
 
 namespace EDCalculations.Functions;
 
-public static class MassacreFinder
+public class MassacreFinder
 {
-    public static async Task<string> FindMassacreSystemPossibilitiesAsync(string systemName, int range, IProgress<string>? progress, CancellationToken? cancelToken)
+    private Queries edsm;
+    public MassacreFinder(HttpClient http)
+    {
+        edsm = new Queries(http);
+    }
+
+    public async Task<string> FindMassacreSystemPossibilitiesAsync(string systemName, int range, IProgress<string>? progress, CancellationToken? cancelToken)
     {
         progress?.Report("Retrieving Systems");
-        var systemList = await Queries.GetSystemsinSphereAsync(systemName, range);
+        var systemList = await edsm.GetSystemsinSphereAsync(systemName, range);
         systemList = systemList.Where(x => x.information != null);
 
         progress?.Report($"Retrieving Body Information for {systemList.Count()} systems");
@@ -24,12 +30,12 @@ public static class MassacreFinder
         return JsonSerializer.Serialize(possibilities);
     }
 
-    private static async Task<IEnumerable<SphereSystem>> GetSystemsWithRingsAsync(IEnumerable<SphereSystem> systemList)
+    private async Task<IEnumerable<SphereSystem>> GetSystemsWithRingsAsync(IEnumerable<SphereSystem> systemList)
     {
         IEnumerable<SphereSystem> hasRingsList = new List<SphereSystem>();
         foreach (var system in systemList)
         {
-            var systemBodies = (await Queries.GetBodiesInSystemAsync(system.name)).bodies;
+            var systemBodies = (await edsm.GetBodiesInSystemAsync(system.name)).bodies;
 
             if (systemBodies.Where(x => x.rings != null).Count() > 0)
                 hasRingsList = hasRingsList.Append(system);
@@ -37,19 +43,19 @@ public static class MassacreFinder
         return hasRingsList;
     }
 
-    private static async Task<IEnumerable<SphereSystem>> GetSystemsWithAnarchyFactionAsync(IEnumerable<SphereSystem> systemList)
+    private async Task<IEnumerable<SphereSystem>> GetSystemsWithAnarchyFactionAsync(IEnumerable<SphereSystem> systemList)
     {
         IEnumerable<SphereSystem> hasAnarchyList = new List<SphereSystem>();
         foreach (var system in systemList)
         {
-            var systemFactionInfo = await Queries.GetFactionsInSystemAsync(system.name);
+            var systemFactionInfo = await edsm.GetFactionsInSystemAsync(system.name);
             if (systemFactionInfo.factions?.Where(x => x.government.ToUpper() == "ANARCHY").Count() > 0)
                 hasAnarchyList = hasAnarchyList.Append(system);
         }
         return hasAnarchyList;
     }
 
-    private static async Task<IEnumerable<Possibility>> FinalizePossibilitiesAsync(IEnumerable<SphereSystem> systemList, IProgress<string>? progress)
+    private async Task<IEnumerable<Possibility>> FinalizePossibilitiesAsync(IEnumerable<SphereSystem> systemList, IProgress<string>? progress)
     {
         IEnumerable<Possibility> possibilities = new List<Possibility>();
         foreach (var (system, i) in systemList.Select((value, i) => (value, i)))
@@ -65,9 +71,9 @@ public static class MassacreFinder
         return possibilities;
     }
 
-    private static async Task<IEnumerable<SphereSystem>> GetPopulatedSystemsWithin10LYAsync(SphereSystem system)
+    private async Task<IEnumerable<SphereSystem>> GetPopulatedSystemsWithin10LYAsync(SphereSystem system)
     {
-        var closeSystems = await Queries.GetSystemsinSphereAsync(system.name, 10);
+        var closeSystems = await edsm.GetSystemsinSphereAsync(system.name, 10);
         return closeSystems.Where(x => x.information?.population > 100);
     }
 }

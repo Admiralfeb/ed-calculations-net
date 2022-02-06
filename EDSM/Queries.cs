@@ -5,18 +5,17 @@ using System.Web;
 namespace EDCalculations.EDSM;
 public class Queries
 {
-    static readonly HttpClient client = new HttpClient();
-    public static async Task<SystemBodies> GetBodiesInSystemAsync(string systemName)
+    private readonly HttpClient Http;
+
+    public Queries(HttpClient http)
     {
-        const string apiURL = "https://www.edsm.net/api-system-v1/bodies";
-        var builder = new UriBuilder(apiURL);
-        builder.Port = -1;
+        Http = http;
+    }
+    public async Task<SystemBodies> GetBodiesInSystemAsync(string systemName)
+    {
+        string apiURL = $"https://www.edsm.net/api-system-v1/bodies?systemName={systemName}";
 
-        var query = HttpUtility.ParseQueryString(builder.Query);
-        query["systemName"] = systemName;
-        builder.Query = query.ToString();
-
-        SystemBodies? response = await client.GetFromJsonAsync<SystemBodies>(builder.ToString());
+        SystemBodies? response = await Http.GetFromJsonAsync<SystemBodies>(apiURL);
 
         if (response != null)
             return response;
@@ -24,7 +23,7 @@ public class Queries
             throw new Exception("Not found");
     }
 
-    public static async Task<SystemFactionInfo> GetFactionsInSystemAsync(string systemName)
+    public async Task<SystemFactionInfo> GetFactionsInSystemAsync(string systemName)
     {
         const string apiURL = "https://www.edsm.net/api-system-v1/factions";
         var builder = new UriBuilder(apiURL);
@@ -34,7 +33,7 @@ public class Queries
         query["systemName"] = systemName;
         builder.Query = query.ToString();
 
-        SystemFactionInfo? response = await client.GetFromJsonAsync<SystemFactionInfo>(builder.ToString());
+        SystemFactionInfo? response = await Http.GetFromJsonAsync<SystemFactionInfo>(builder.ToString());
 
         if (response != null)
             return response;
@@ -42,7 +41,7 @@ public class Queries
             throw new Exception("Not found");
     }
 
-    public static async Task<SystemStations> GetStationsInSystemAsync(string systemName)
+    public async Task<SystemStations> GetStationsInSystemAsync(string systemName)
     {
         const string apiURL = "https://www.edsm.net/api-system-v1/stations";
         var builder = new UriBuilder(apiURL);
@@ -52,7 +51,7 @@ public class Queries
         query["systemName"] = systemName;
         builder.Query = query.ToString();
 
-        SystemStations? response = await client.GetFromJsonAsync<SystemStations>(builder.ToString());
+        SystemStations? response = await Http.GetFromJsonAsync<SystemStations>(builder.ToString());
 
         if (response != null)
             return response;
@@ -60,9 +59,9 @@ public class Queries
             throw new Exception("Not found");
     }
 
-    public static async Task<IEnumerable<SphereSystem>> GetSystemsinSphereAsync(string systemName, int distance)
+    public async Task<IEnumerable<SphereSystem>> GetSystemsinSphereAsync(string systemName, int distance)
     {
-        const string apiURL = "https://www.edsm.net/api-system-v1/factionss";
+        const string apiURL = "https://www.edsm.net/api-v1/sphere-systems";
         var builder = new UriBuilder(apiURL);
         builder.Port = -1;
 
@@ -75,7 +74,7 @@ public class Queries
 
         builder.Query = query.ToString();
 
-        IEnumerable<SphereSystem>? response = await client.GetFromJsonAsync<IEnumerable<SphereSystem>>(builder.ToString());
+        IEnumerable<SphereSystem>? response = await Http.GetFromJsonAsync<IEnumerable<SphereSystem>>(builder.ToString());
 
         if (response != null)
             return response.Where(x => x.distance > 0);
