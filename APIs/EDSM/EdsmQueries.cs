@@ -4,14 +4,9 @@ using EDCalculations.APIs.EDSM.Models;
 
 
 namespace EDCalculations.APIs.EDSM;
-public class EdsmQueries
+public class EdsmQueries : QueriesBase
 {
-    private readonly HttpClient Http;
-
-    public EdsmQueries(HttpClient http)
-    {
-        Http = http;
-    }
+    public EdsmQueries(HttpClient client) : base(client) { }
     public async Task<SystemBodies> GetBodiesInSystemAsync(string systemName)
     {
         const string apiURL = "https://www.edsm.net/api-system-v1/bodies?systemName={Uri.EscapeDataString(systemName)}";
