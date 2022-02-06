@@ -1,0 +1,4 @@
+[ReportGenerator]
+    reports = */coverage.opencover.xml
+    targetdir = coverage
+    reporttypes = Html

@@ -8,23 +8,23 @@ using Xunit;
 
 namespace EDCalculations.EDSM.Test.QueriesTest;
 
-public class GetBodiesInSystemAsync
+public class GetFactionsInSystemAsync
 {
     [Fact]
     public async void ShouldCallUsingSystemProvided()
     {
-        var expected = new SystemBodies() { name = "Arugbal" };
+        var expected = new SystemFactionInfo() { name = "Arugbal" };
         var json = JsonSerializer.Serialize(expected);
 
         HttpClient httpClient = MockClient.GenerateMockClientWithData(json);
 
         var queries = new Queries(httpClient);
 
-        var bodies = await queries.GetBodiesInSystemAsync("Arugbal");
+        var response = await queries.GetFactionsInSystemAsync("Arugbal");
 
-        Assert.Equal(expected.name, bodies.name);
-        Assert.Equal(null, bodies.bodies);
-        Assert.Equal(0, bodies.id);
+        Assert.Equal(expected.name, response.name);
+        Assert.Equal(null, response.factions);
+        Assert.Equal(0, response.id);
     }
 
     [Fact]
@@ -34,6 +34,6 @@ public class GetBodiesInSystemAsync
 
         var queries = new Queries(httpClient);
 
-        await Assert.ThrowsAsync<HttpRequestException>(async () => await queries.GetBodiesInSystemAsync("Issues Abound"));
+        await Assert.ThrowsAsync<HttpRequestException>(async () => await queries.GetFactionsInSystemAsync("Issues Abound"));
     }
 }

@@ -1,41 +1,72 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "build",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "build",
-                "${workspaceFolder}/Functions.Test/Functions.Test.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "publish",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "publish",
-                "${workspaceFolder}/Functions.Test/Functions.Test.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "watch",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "watch",
-                "run",
-                "--project",
-                "${workspaceFolder}/Functions.Test/Functions.Test.csproj"
-            ],
-            "problemMatcher": "$msCompile"
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+        "label": "build",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+            "build",
+            "${workspaceFolder}/Functions.Test/Functions.Test.csproj",
+            "/property:GenerateFullPaths=true",
+            "/consoleloggerparameters:NoSummary"
+        ],
+        "problemMatcher": "$msCompile"
+    },
+    {
+        "label": "publish",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+            "publish",
+            "${workspaceFolder}/Functions.Test/Functions.Test.csproj",
+            "/property:GenerateFullPaths=true",
+            "/consoleloggerparameters:NoSummary"
+        ],
+        "problemMatcher": "$msCompile"
+    },
+    {
+        "label": "watch",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+            "watch",
+            "run",
+            "--project",
+            "${workspaceFolder}/Functions.Test/Functions.Test.csproj"
+        ],
+        "problemMatcher": "$msCompile"
+    },
+    {
+        "label": "test",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+            "test",
+            "--verbosity",
+            "normal",
+            "/p:CollectCoverage=true",
+            "/p:CoverletOutputFormat=opencover"
+        ]
+    },
+    {
+        "label": "coverage",
+        "command": "reportgenerator",
+        "type": "process",
+        "dependsOn": "test",
+        "problemMatcher": []
+    },
+    {
+        "label": "InstallReportGenerator",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+            "tool",
+            "install",
+            "-g",
+            "dotnet-reportgenerator-globaltool"
+        ],
+        "problemMatcher": []
+    }
+]
 }
