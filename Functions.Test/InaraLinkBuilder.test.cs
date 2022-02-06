@@ -17,7 +17,6 @@ public class InaraLinkBuilderTest
     public void BuildStationLink()
     {
         var response = InaraLinkBuilder.BuildStationSearchString("Arugbal", "Meaney Dock");
-        Console.WriteLine(response);
 
         Assert.Equal("https://inara.cz/station/?search=Arugbal%20%5BMeaney%20Dock%5D", response);
     }
