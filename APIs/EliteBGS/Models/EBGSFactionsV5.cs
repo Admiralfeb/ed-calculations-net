@@ -12,7 +12,7 @@ public class EBGSFactionsV5
     public string allegiance { get; set; }
     public string home_system_name { get; set; }
     public string is_player_faction { get; set; }
-    public IEnumerable<object> faction_presence { get; set; }
+    public IEnumerable<EBGSFactionPresenceV5> faction_presence { get; set; }
     public IEnumerable<object> history { get; set; }
 }
 

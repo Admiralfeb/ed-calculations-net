@@ -2,7 +2,7 @@ using System.Net.Http.Json;
 
 using EDCalculations.APIs.EliteBgs.Models;
 
-namespace EDCalculations.APIs.EDSM;
+namespace EDCalculations.APIs.EliteBgs;
 
 public class EBGSQueries : QueriesBase
 {
