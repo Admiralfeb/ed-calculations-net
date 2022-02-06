@@ -1,15 +1,17 @@
 using System.Text.Json;
+
 using EDCalculations.EDSM;
 using EDCalculations.EDSM.Models;
+using EDCalculations.Functions.Models;
 
 namespace EDCalculations.Functions;
 
 public class MassacreFinder
 {
     private Queries edsm;
-    public MassacreFinder(HttpClient http)
+    public MassacreFinder(HttpClient client)
     {
-        edsm = new Queries(http);
+        edsm = new Queries(client);
     }
 
     public async Task<string> FindMassacreSystemPossibilitiesAsync(string systemName, int range, IProgress<string>? progress, CancellationToken? cancelToken)
@@ -55,16 +57,16 @@ public class MassacreFinder
         return hasAnarchyList;
     }
 
-    private async Task<IEnumerable<Possibility>> FinalizePossibilitiesAsync(IEnumerable<SphereSystem> systemList, IProgress<string>? progress)
+    private async Task<IEnumerable<MassacrePossibility>> FinalizePossibilitiesAsync(IEnumerable<SphereSystem> systemList, IProgress<string>? progress)
     {
-        IEnumerable<Possibility> possibilities = new List<Possibility>();
+        IEnumerable<MassacrePossibility> possibilities = new List<MassacrePossibility>();
         foreach (var (system, i) in systemList.Select((value, i) => (value, i)))
         {
             progress?.Report($"Checking for populated systems. {i} of {systemList.Count()}. System: {system.name}");
             var closeSystems = await GetPopulatedSystemsWithin10LYAsync(system);
             if (closeSystems.Count() > 0)
             {
-                Possibility possibility = new(system, closeSystems);
+                MassacrePossibility possibility = new(system, closeSystems);
                 possibilities = possibilities.Append(possibility);
             }
         }
