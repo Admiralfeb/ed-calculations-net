@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EDSM\EDCalculations.EDSM.csproj" />
+    <ProjectReference Include="..\APIs\EDCalculations.APIs.csproj" />
   </ItemGroup>
 
 </Project>

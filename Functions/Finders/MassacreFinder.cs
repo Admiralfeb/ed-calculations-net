@@ -1,17 +1,17 @@
 using System.Text.Json;
 
-using EDCalculations.EDSM;
-using EDCalculations.EDSM.Models;
+using EDCalculations.APIs.EDSM;
+using EDCalculations.APIs.EDSM.Models;
 using EDCalculations.Functions.Models;
 
-namespace EDCalculations.Functions;
+namespace EDCalculations.Functions.Finders;
 
 public class MassacreFinder
 {
-    private Queries edsm;
+    private EdsmQueries edsm;
     public MassacreFinder(HttpClient client)
     {
-        edsm = new Queries(client);
+        edsm = new EdsmQueries(client);
     }
 
     public async Task<string> FindMassacreSystemPossibilitiesAsync(string systemName, int range, IProgress<string>? progress, CancellationToken? cancelToken)

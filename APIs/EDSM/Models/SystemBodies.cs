@@ -1,4 +1,4 @@
-namespace EDCalculations.EDSM.Models;
+namespace EDCalculations.APIs.EDSM.Models;
 
 public class SystemBodies
 {

@@ -1,14 +1,14 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 
-using EDCalculations.EDSM.Models;
+using EDCalculations.APIs.EDSM;
+using EDCalculations.APIs.EDSM.Models;
 
 using Xunit;
 
-namespace EDCalculations.EDSM.Test.QueriesTest;
+namespace EDCalculations.APIs.Test.EDSM.QueriesTest;
 
 public class GetSystemsinSphereAsync
 {
@@ -20,7 +20,7 @@ public class GetSystemsinSphereAsync
 
         HttpClient httpClient = MockClient.GenerateMockClientWithData(json);
 
-        var queries = new Queries(httpClient);
+        var queries = new EdsmQueries(httpClient);
 
         var response = (await queries.GetSystemsinSphereAsync("Arugbal", 10)).ToList();
 
@@ -33,7 +33,7 @@ public class GetSystemsinSphereAsync
     {
         HttpClient httpClient = MockClient.GenerateMockClientWithError();
 
-        var queries = new Queries(httpClient);
+        var queries = new EdsmQueries(httpClient);
 
         await Assert.ThrowsAsync<HttpRequestException>(async () => await queries.GetSystemsinSphereAsync("Issues Abound", 20));
     }

@@ -1,4 +1,4 @@
-using EDCalculations.EDSM.Models;
+using EDCalculations.APIs.EDSM.Models;
 
 namespace EDCalculations.Functions.Models;
 

@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Functions", "Functions\Func
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Functions.Test", "Functions.Test\Functions.Test.csproj", "{AFC39343-ADF1-4FE6-B7FB-ED1458D497EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDCalculations.EDSM", "EDSM\EDCalculations.EDSM.csproj", "{0B91B748-9793-4C35-825C-2D6C1F5C0B69}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDCalculations.APIs", "APIs\EDCalculations.APIs.csproj", "{0B91B748-9793-4C35-825C-2D6C1F5C0B69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDCalculations.EDSM.Test", "EDSM.Test\EDCalculations.EDSM.Test.csproj", "{F3531646-E5E0-4CB2-8901-297626485D7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDCalculations.APIs.Test", "APIs.Test\EDCalculations.APIs.Test.csproj", "{F3531646-E5E0-4CB2-8901-297626485D7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Moq;
 using Moq.Protected;
 
-namespace EDCalculations.EDSM.Test;
+namespace EDCalculations.APIs.Test;
 
 internal static class MockClient
 {

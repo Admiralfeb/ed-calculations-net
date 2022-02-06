@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\EDSM\EDCalculations.EDSM.csproj" />
+    <ProjectReference Include="..\APIs\EDCalculations.APIs.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

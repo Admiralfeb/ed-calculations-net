@@ -1,13 +1,14 @@
-﻿using EDCalculations.EDSM.Models;
-using System.Net.Http.Json;
-using System.Web;
+﻿using System.Net.Http.Json;
 
-namespace EDCalculations.EDSM;
-public class Queries
+using EDCalculations.APIs.EDSM.Models;
+
+
+namespace EDCalculations.APIs.EDSM;
+public class EdsmQueries
 {
     private readonly HttpClient Http;
 
-    public Queries(HttpClient http)
+    public EdsmQueries(HttpClient http)
     {
         Http = http;
     }

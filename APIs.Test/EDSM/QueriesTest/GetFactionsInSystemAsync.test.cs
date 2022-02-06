@@ -2,11 +2,12 @@ using System;
 using System.Net.Http;
 using System.Text.Json;
 
-using EDCalculations.EDSM.Models;
+using EDCalculations.APIs.EDSM;
+using EDCalculations.APIs.EDSM.Models;
 
 using Xunit;
 
-namespace EDCalculations.EDSM.Test.QueriesTest;
+namespace EDCalculations.APIs.Test.EDSM.QueriesTest;
 
 public class GetFactionsInSystemAsync
 {
@@ -18,7 +19,7 @@ public class GetFactionsInSystemAsync
 
         HttpClient httpClient = MockClient.GenerateMockClientWithData(json);
 
-        var queries = new Queries(httpClient);
+        var queries = new EdsmQueries(httpClient);
 
         var response = await queries.GetFactionsInSystemAsync("Arugbal");
 
@@ -32,7 +33,7 @@ public class GetFactionsInSystemAsync
     {
         HttpClient httpClient = MockClient.GenerateMockClientWithError();
 
-        var queries = new Queries(httpClient);
+        var queries = new EdsmQueries(httpClient);
 
         await Assert.ThrowsAsync<HttpRequestException>(async () => await queries.GetFactionsInSystemAsync("Issues Abound"));
     }
