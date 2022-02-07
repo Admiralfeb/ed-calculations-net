@@ -13,14 +13,6 @@ public class EBGSQueries : QueriesBase
         const string apiUrl = "https://elitebgs.app/api/ebgs/v5/factions";
         string query = $"?name={Uri.EscapeDataString(factionName)}";
 
-        try
-        {
-            return (await GetFromApi<Response<EBGSFactionsV5>>(apiUrl + query)).docs.First();
-        }
-        catch (System.Exception)
-        {
-
-            throw;
-        }
+        return (await GetFromApi<Response<EBGSFactionsV5>>(apiUrl + query)).docs.First();
     }
 }
