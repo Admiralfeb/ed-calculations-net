@@ -13,12 +13,14 @@ public class EBGSQueries : QueriesBase
         const string apiUrl = "https://elitebgs.app/api/ebgs/v5/factions";
         string query = $"?name={Uri.EscapeDataString(factionName)}";
 
-        var response = await Http.GetFromJsonAsync<Response<EBGSFactionsV5>>(apiUrl + query);
+        try
+        {
+            return (await GetFromApi<Response<EBGSFactionsV5>>(apiUrl + query)).docs.First();
+        }
+        catch (System.Exception)
+        {
 
-
-        if (response != null)
-            return response.docs.First();
-        else
-            throw new NullReferenceException("Faction info is null");
+            throw;
+        }
     }
 }
