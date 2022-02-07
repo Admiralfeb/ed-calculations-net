@@ -12,12 +12,12 @@ public class GetFactionsAsync
     [Fact]
     public async void ShouldCallUsingFactionProvided()
     {
-        var expected = new Response<EBGSFactionsV5>() { docs = new List<EBGSFactionsV5>() { new EBGSFactionsV5() { name = "Faction Name" } } };
+        var expected = new Response<EbgsFactionsV5>() { docs = new List<EbgsFactionsV5>() { new EbgsFactionsV5() { name = "Faction Name" } } };
         var json = JsonSerializer.Serialize(expected);
 
         HttpClient httpClient = MockClient.GenerateMockClientWithData(json);
 
-        var queries = new EBGSQueries(httpClient);
+        var queries = new EbgsQueries(httpClient);
 
         var response = await queries.GetFactionsAsync("Faction Name");
 
@@ -29,7 +29,7 @@ public class GetFactionsAsync
     {
         HttpClient httpClient = MockClient.GenerateMockClientWithError();
 
-        var queries = new EBGSQueries(httpClient);
+        var queries = new EbgsQueries(httpClient);
 
         await Assert.ThrowsAsync<HttpRequestException>(async () => await queries.GetFactionsAsync("Issues Abound"));
     }

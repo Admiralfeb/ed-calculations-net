@@ -1,6 +1,6 @@
 namespace EDCalculations.APIs.EliteBgs.Models;
 
-public class EBGSFactionsV5
+public class EbgsFactionsV5
 {
     public string _id { get; set; } = string.Empty;
     public int __v { get; set; }
@@ -12,11 +12,11 @@ public class EBGSFactionsV5
     public string allegiance { get; set; } = string.Empty;
     public string home_system_name { get; set; } = string.Empty;
     public string is_player_faction { get; set; } = string.Empty;
-    public IEnumerable<EBGSFactionPresenceV5> faction_presence { get; set; } = new List<EBGSFactionPresenceV5>();
+    public IEnumerable<EbgsFactionPresenceV5> faction_presence { get; set; } = new List<EbgsFactionPresenceV5>();
     public IEnumerable<object> history { get; set; } = new List<object>();
 }
 
-public class EBGSFactionPresenceV5
+public class EbgsFactionPresenceV5
 {
     public string system_name { get; set; } = string.Empty;
     public string system_name_lower { get; set; } = string.Empty;
@@ -32,11 +32,11 @@ public class EBGSFactionPresenceV5
     public string updated_at { get; set; } = string.Empty;
 }
 
-public class EBGSStateActiveV5
+public class EbgsStateActiveV5
 {
     public string state { get; set; } = string.Empty;
 }
-public class EBGSStateV5
+public class EbgsStateV5
 {
     public string state { get; set; } = string.Empty;
     public int trend { get; set; }

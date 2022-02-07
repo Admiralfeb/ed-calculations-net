@@ -8,7 +8,7 @@ namespace EDCalculations.Functions.Finders;
 
 public class MassacreFinder
 {
-    private EdsmQueries edsm;
+    private readonly EdsmQueries edsm;
     public MassacreFinder(HttpClient client)
     {
         edsm = new EdsmQueries(client);
@@ -39,7 +39,7 @@ public class MassacreFinder
         {
             var systemBodies = (await edsm.GetBodiesInSystemAsync(system.name)).bodies;
 
-            if (systemBodies.Where(x => x.rings != null).Any())
+            if (systemBodies.Any(x => x.rings != null))
                 hasRingsList = hasRingsList.Append(system);
         }
         return hasRingsList;
@@ -51,7 +51,7 @@ public class MassacreFinder
         foreach (var system in systemList)
         {
             var systemFactionInfo = await edsm.GetFactionsInSystemAsync(system.name);
-            if (systemFactionInfo.factions?.Where(x => x.government.ToUpper() == "ANARCHY").Count() > 0)
+            if (systemFactionInfo.factions?.Count(x => x.government.ToUpper() == "ANARCHY") > 0)
                 hasAnarchyList = hasAnarchyList.Append(system);
         }
         return hasAnarchyList;
@@ -64,7 +64,7 @@ public class MassacreFinder
         {
             progress?.Report($"Checking for populated systems. {i} of {systemList.Count()}. System: {system.name}");
             var closeSystems = await GetPopulatedSystemsWithin10LYAsync(system);
-            if (closeSystems.Count() > 0)
+            if (closeSystems.Any())
             {
                 MassacrePossibility possibility = new(system, closeSystems);
                 possibilities = possibilities.Append(possibility);

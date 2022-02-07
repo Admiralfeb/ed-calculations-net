@@ -4,7 +4,7 @@ namespace EDCalculations.Functions.Finders;
 
 public class ExpansionFinder
 {
-    private EdsmQueries edsm;
+    private readonly EdsmQueries edsm;
 
     public ExpansionFinder(HttpClient client)
     {

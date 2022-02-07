@@ -4,15 +4,15 @@ using EDCalculations.APIs.EliteBgs.Models;
 
 namespace EDCalculations.APIs.EliteBgs;
 
-public class EBGSQueries : QueriesBase
+public class EbgsQueries : QueriesBase
 {
-    public EBGSQueries(HttpClient client) : base(client) { }
+    public EbgsQueries(HttpClient client) : base(client) { }
 
-    public async Task<EBGSFactionsV5> GetFactionsAsync(string factionName)
+    public async Task<EbgsFactionsV5> GetFactionsAsync(string factionName)
     {
         const string apiUrl = "https://elitebgs.app/api/ebgs/v5/factions";
         string query = $"?name={Uri.EscapeDataString(factionName)}";
 
-        return (await GetFromApi<Response<EBGSFactionsV5>>(apiUrl + query)).docs.First();
+        return (await GetFromApi<Response<EbgsFactionsV5>>(apiUrl + query)).docs.First();
     }
 }
