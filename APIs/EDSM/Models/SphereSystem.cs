@@ -4,11 +4,11 @@ public class SphereSystem
 {
     public int distance { get; set; }
     public int bodyCount { get; set; }
-    public string name { get; set; }
-    public Coordinants coords { get; set; }
+    public string name { get; set; } = string.Empty;
+    public Coordinants coords { get; set; } = new();
     public bool coordsLocked { get; set; }
-    public SysInfo information { get; set; }
-    public PrimaryStar primaryStar { get; set; }
+    public SysInfo information { get; set; } = new();
+    public PrimaryStar primaryStar { get; set; } = new();
 
 }
 
@@ -35,7 +35,7 @@ public class SysInfo
 
 public class PrimaryStar
 {
-    public string type { get; set; }
-    public string name { get; set; }
+    public string type { get; set; } = string.Empty;
+    public string name { get; set; } = string.Empty;
     public bool isScoopable { get; set; }
 }

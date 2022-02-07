@@ -39,7 +39,7 @@ public class MassacreFinder
         {
             var systemBodies = (await edsm.GetBodiesInSystemAsync(system.name)).bodies;
 
-            if (systemBodies.Where(x => x.rings != null).Count() > 0)
+            if (systemBodies.Where(x => x.rings != null).Any())
                 hasRingsList = hasRingsList.Append(system);
         }
         return hasRingsList;

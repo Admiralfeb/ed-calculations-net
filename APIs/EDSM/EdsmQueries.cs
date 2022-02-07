@@ -9,7 +9,7 @@ public class EdsmQueries : QueriesBase
     public EdsmQueries(HttpClient client) : base(client) { }
     public async Task<SystemBodies> GetBodiesInSystemAsync(string systemName)
     {
-        const string apiURL = "https://www.edsm.net/api-system-v1/bodies?systemName={Uri.EscapeDataString(systemName)}";
+        const string apiURL = "https://www.edsm.net/api-system-v1/bodies";
         string query = $"?systemName={Uri.EscapeDataString(systemName)}";
 
         SystemBodies? response = await Http.GetFromJsonAsync<SystemBodies>(apiURL + query);
@@ -17,7 +17,7 @@ public class EdsmQueries : QueriesBase
         if (response != null)
             return response;
         else
-            throw new Exception("Bodies is null");
+            throw new NullReferenceException("Bodies is null");
     }
 
     public async Task<SystemFactionInfo> GetFactionsInSystemAsync(string systemName)
@@ -30,7 +30,7 @@ public class EdsmQueries : QueriesBase
         if (response != null)
             return response;
         else
-            throw new Exception("Not found");
+            throw new NullReferenceException("Not found");
     }
 
     public async Task<SystemStations> GetStationsInSystemAsync(string systemName)
@@ -43,7 +43,7 @@ public class EdsmQueries : QueriesBase
         if (response != null)
             return response;
         else
-            throw new Exception("Not found");
+            throw new NullReferenceException("Not found");
     }
 
     public async Task<IEnumerable<SphereSystem>> GetSystemsinSphereAsync(string systemName, int distance)
@@ -57,6 +57,6 @@ public class EdsmQueries : QueriesBase
         if (response != null)
             return response.Where(x => x.distance > 0);
         else
-            throw new Exception("Not found");
+            throw new NullReferenceException("Not found");
     }
 }

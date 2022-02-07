@@ -19,6 +19,6 @@ public class EBGSQueries : QueriesBase
         if (response != null)
             return response.docs.First();
         else
-            throw new Exception("Faction info is null");
+            throw new NullReferenceException("Faction info is null");
     }
 }

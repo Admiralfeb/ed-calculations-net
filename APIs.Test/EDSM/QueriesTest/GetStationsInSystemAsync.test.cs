@@ -24,7 +24,7 @@ public class GetStationsInSystemAsync
         var response = await queries.GetStationsInSystemAsync("Arugbal");
 
         Assert.Equal(expected.name, response.name);
-        Assert.Equal(null, response.stations);
+        Assert.Null(response.stations);
         Assert.Equal(0, response.id);
     }
 
