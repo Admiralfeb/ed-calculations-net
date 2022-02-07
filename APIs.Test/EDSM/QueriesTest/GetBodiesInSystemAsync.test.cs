@@ -24,7 +24,6 @@ public class GetBodiesInSystemAsync
         var bodies = await queries.GetBodiesInSystemAsync("Arugbal");
 
         Assert.Equal(expected.name, bodies.name);
-        Assert.Null(bodies.bodies);
         Assert.Equal(0, bodies.id);
     }
 

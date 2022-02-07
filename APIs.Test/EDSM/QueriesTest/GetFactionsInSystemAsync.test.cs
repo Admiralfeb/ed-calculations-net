@@ -24,7 +24,6 @@ public class GetFactionsInSystemAsync
         var response = await queries.GetFactionsInSystemAsync("Arugbal");
 
         Assert.Equal(expected.name, response.name);
-        Assert.Null(response.factions);
         Assert.Equal(0, response.id);
     }
 
