@@ -1,5 +1,9 @@
 {
   "sonar-dotnet-vscode.connection.project": {
-    "projectKey": "ed-calculations-net"
+    "projectKey": "Admiralfeb_ed-calculations-net"
+  },
+  "sonarlint.connectedMode.project": {
+    "projectKey": "Admiralfeb_ed-calculations-net",
+    "connectionId": "sonarCloud"
   }
 }
