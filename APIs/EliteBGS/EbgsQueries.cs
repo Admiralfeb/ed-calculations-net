@@ -10,7 +10,7 @@ public class EbgsQueries : QueriesBase
 
     public async Task<EbgsFactionsV5> GetFactionsAsync(string factionName)
     {
-        const string apiUrl = "https://elitebgs.app/api/ebgs/v5/factions";
+        const string apiUrl = ApiConstants.ebgsFactions;
         string query = $"?name={Uri.EscapeDataString(factionName)}";
 
         return (await GetFromApi<Response<EbgsFactionsV5>>(apiUrl + query)).docs.First();

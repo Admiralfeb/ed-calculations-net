@@ -1,6 +1,4 @@
-﻿using System.Net.Http.Json;
-
-using EDCalculations.APIs.EDSM.Models;
+﻿using EDCalculations.APIs.EDSM.Models;
 
 
 namespace EDCalculations.APIs.EDSM;
@@ -9,7 +7,7 @@ public class EdsmQueries : QueriesBase
     public EdsmQueries(HttpClient client) : base(client) { }
     public async Task<SystemBodies> GetBodiesInSystemAsync(string systemName)
     {
-        const string apiURL = "https://www.edsm.net/api-system-v1/bodies";
+        const string apiURL = ApiConstants.edsmBodies;
         string query = $"?systemName={Uri.EscapeDataString(systemName)}";
 
         return await GetFromApi<SystemBodies>(apiURL + query);
@@ -17,7 +15,7 @@ public class EdsmQueries : QueriesBase
 
     public async Task<SystemFactionInfo> GetFactionsInSystemAsync(string systemName)
     {
-        const string apiURL = "https://www.edsm.net/api-system-v1/factions";
+        const string apiURL = ApiConstants.edsmFactions;
         string query = $"?systemName={Uri.EscapeDataString(systemName)}";
 
         return await GetFromApi<SystemFactionInfo>(apiURL + query);
@@ -25,7 +23,7 @@ public class EdsmQueries : QueriesBase
 
     public async Task<SystemStations> GetStationsInSystemAsync(string systemName)
     {
-        const string apiURL = "https://www.edsm.net/api-system-v1/stations";
+        const string apiURL = ApiConstants.edsmStations;
         string query = $"?systemName={Uri.EscapeDataString(systemName)}";
 
         return await GetFromApi<SystemStations>(apiURL + query);
@@ -33,7 +31,7 @@ public class EdsmQueries : QueriesBase
 
     public async Task<IEnumerable<SphereSystem>> GetSystemsinSphereAsync(string systemName, int distance)
     {
-        const string apiURL = "https://www.edsm.net/api-v1/sphere-systems";
+        const string apiURL = ApiConstants.edsmSystemsinSphere;
         string query =
         $"?systemName={Uri.EscapeDataString(systemName)}&radius={distance.ToString()}&showPrimaryStar=1&showInformation=1&showCoordinates=1";
 

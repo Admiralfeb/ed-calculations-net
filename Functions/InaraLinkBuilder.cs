@@ -4,7 +4,7 @@ namespace EDCalculations.Functions;
 
 public static class InaraLinkBuilder
 {
-    private const string inaraBaseUrl = "https://inara.cz";
+    private const string inaraBaseUrl = Constants.inaraBaseUrl;
 
     public static string BuildSystemSearchString(string system)
     {
