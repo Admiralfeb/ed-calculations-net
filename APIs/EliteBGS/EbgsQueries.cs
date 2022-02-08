@@ -13,6 +13,6 @@ public class EbgsQueries : QueriesBase
         const string apiUrl = ApiConstants.ebgsFactions;
         string query = $"?name={Uri.EscapeDataString(factionName)}";
 
-        return (await GetFromApi<Response<EbgsFactionsV5>>(apiUrl + query)).docs.First();
+        return (await GetFromApi<Response<EbgsFactionsV5>>(apiUrl + query)).Docs.First();
     }
 }

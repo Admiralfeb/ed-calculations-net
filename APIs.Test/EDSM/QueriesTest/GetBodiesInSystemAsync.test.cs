@@ -14,7 +14,7 @@ public class GetBodiesInSystemAsync
     [Fact]
     public async void ShouldCallUsingSystemProvided()
     {
-        var expected = new SystemBodies() { name = "Arugbal" };
+        var expected = new SystemBodies() { Name = "Arugbal" };
         var json = JsonSerializer.Serialize(expected);
 
         HttpClient httpClient = MockClient.GenerateMockClientWithData(json);
@@ -23,8 +23,8 @@ public class GetBodiesInSystemAsync
 
         var bodies = await queries.GetBodiesInSystemAsync("Arugbal");
 
-        Assert.Equal(expected.name, bodies.name);
-        Assert.Equal(0, bodies.id);
+        Assert.Equal(expected.Name, bodies.Name);
+        Assert.Equal(0, bodies.Id);
     }
 
     [Fact]

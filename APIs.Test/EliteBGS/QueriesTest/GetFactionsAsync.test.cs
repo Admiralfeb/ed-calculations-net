@@ -12,7 +12,7 @@ public class GetFactionsAsync
     [Fact]
     public async void ShouldCallUsingFactionProvided()
     {
-        var expected = new Response<EbgsFactionsV5>() { docs = new List<EbgsFactionsV5>() { new EbgsFactionsV5() { name = "Faction Name" } } };
+        var expected = new Response<EbgsFactionsV5>() { Docs = new List<EbgsFactionsV5>() { new EbgsFactionsV5() { Name = "Faction Name" } } };
         var json = JsonSerializer.Serialize(expected);
 
         HttpClient httpClient = MockClient.GenerateMockClientWithData(json);
@@ -21,7 +21,7 @@ public class GetFactionsAsync
 
         var response = await queries.GetFactionsAsync("Faction Name");
 
-        Assert.Equal("Faction Name", response.name);
+        Assert.Equal("Faction Name", response.Name);
     }
 
     [Fact]

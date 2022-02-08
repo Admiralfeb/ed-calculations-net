@@ -15,7 +15,7 @@ public class GetSystemsinSphereAsync
     [Fact]
     public async void ShouldCallUsingSystemProvided()
     {
-        var expected = new List<SphereSystem>() { new SphereSystem() { name = "Arugbal", distance = 50 } };
+        var expected = new List<SphereSystem>() { new SphereSystem() { Name = "Arugbal", Distance = 50 } };
         var json = JsonSerializer.Serialize(expected);
 
         HttpClient httpClient = MockClient.GenerateMockClientWithData(json);
@@ -24,8 +24,8 @@ public class GetSystemsinSphereAsync
 
         var response = (await queries.GetSystemsinSphereAsync("Arugbal", 10)).ToList();
 
-        Assert.Equal(expected[0].name, response[0].name);
-        Assert.Equal(expected[0].distance, response[0].distance);
+        Assert.Equal(expected[0].Name, response[0].Name);
+        Assert.Equal(expected[0].Distance, response[0].Distance);
     }
 
     [Fact]

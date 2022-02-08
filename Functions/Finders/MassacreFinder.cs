@@ -18,7 +18,7 @@ public class MassacreFinder
     {
         progress?.Report("Retrieving Systems");
         var systemList = await edsm.GetSystemsinSphereAsync(systemName, range);
-        systemList = systemList.Where(x => x.information != null);
+        systemList = systemList.Where(x => x.Information != null);
 
         progress?.Report($"Retrieving Body Information for {systemList.Count()} systems");
         systemList = await GetSystemsWithRingsAsync(systemList);
@@ -37,9 +37,9 @@ public class MassacreFinder
         IEnumerable<SphereSystem> hasRingsList = new List<SphereSystem>();
         foreach (var system in systemList)
         {
-            var systemBodies = (await edsm.GetBodiesInSystemAsync(system.name)).bodies;
+            var systemBodies = (await edsm.GetBodiesInSystemAsync(system.Name)).Bodies;
 
-            if (systemBodies.Any(x => x.rings != null))
+            if (systemBodies.Any(x => x.Rings != null))
                 hasRingsList = hasRingsList.Append(system);
         }
         return hasRingsList;
@@ -50,8 +50,8 @@ public class MassacreFinder
         IEnumerable<SphereSystem> hasAnarchyList = new List<SphereSystem>();
         foreach (var system in systemList)
         {
-            var systemFactionInfo = await edsm.GetFactionsInSystemAsync(system.name);
-            if (systemFactionInfo.factions?.Count(x => x.government.ToUpper() == "ANARCHY") > 0)
+            var systemFactionInfo = await edsm.GetFactionsInSystemAsync(system.Name);
+            if (systemFactionInfo.Factions?.Count(x => x.Government.ToUpper() == "ANARCHY") > 0)
                 hasAnarchyList = hasAnarchyList.Append(system);
         }
         return hasAnarchyList;
@@ -62,7 +62,7 @@ public class MassacreFinder
         IEnumerable<MassacrePossibility> possibilities = new List<MassacrePossibility>();
         foreach (var (system, i) in systemList.Select((value, i) => (value, i)))
         {
-            progress?.Report($"Checking for populated systems. {i} of {systemList.Count()}. System: {system.name}");
+            progress?.Report($"Checking for populated systems. {i} of {systemList.Count()}. System: {system.Name}");
             var closeSystems = await GetPopulatedSystemsWithin10LYAsync(system);
             if (closeSystems.Any())
             {
@@ -75,7 +75,7 @@ public class MassacreFinder
 
     private async Task<IEnumerable<SphereSystem>> GetPopulatedSystemsWithin10LYAsync(SphereSystem system)
     {
-        var closeSystems = await edsm.GetSystemsinSphereAsync(system.name, 10);
-        return closeSystems.Where(x => x.information?.population > 100);
+        var closeSystems = await edsm.GetSystemsinSphereAsync(system.Name, 10);
+        return closeSystems.Where(x => x.Information?.Population > 100);
     }
 }

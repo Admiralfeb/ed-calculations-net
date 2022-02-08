@@ -2,40 +2,40 @@ namespace EDCalculations.APIs.EDSM.Models;
 
 public class SphereSystem
 {
-    public int distance { get; set; }
-    public int bodyCount { get; set; }
-    public string name { get; set; } = string.Empty;
-    public Coordinants coords { get; set; } = new();
-    public bool coordsLocked { get; set; }
-    public SysInfo information { get; set; } = new();
-    public PrimaryStar primaryStar { get; set; } = new();
+    public float Distance { get; set; }
+    public int BodyCount { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public Coordinants Coords { get; set; } = new();
+    public bool CoordsLocked { get; set; }
+    public SysInfo Information { get; set; } = new();
+    public PrimaryStar PrimaryStar { get; set; } = new();
 
 }
 
 public class Coordinants
 {
-    public float x { get; set; }
-    public float y { get; set; }
-    public float z { get; set; }
+    public float X { get; set; }
+    public float Y { get; set; }
+    public float Z { get; set; }
 }
 
 
 public class SysInfo
 {
-    public string? allegiance { get; set; }
-    public string? government { get; set; }
-    public string? faction { get; set; }
-    public string? factionState { get; set; }
-    public int population { get; set; }
-    public string? security { get; set; }
-    public string? economy { get; set; }
-    public string? secondEconomy { get; set; }
-    public string? reserve { get; set; }
+    public string? Allegiance { get; set; }
+    public string? Government { get; set; }
+    public string? Faction { get; set; }
+    public string? FactionState { get; set; }
+    public int Population { get; set; }
+    public string? Security { get; set; }
+    public string? Economy { get; set; }
+    public string? SecondEconomy { get; set; }
+    public string? Reserve { get; set; }
 }
 
 public class PrimaryStar
 {
-    public string type { get; set; } = string.Empty;
-    public string name { get; set; } = string.Empty;
-    public bool isScoopable { get; set; }
+    public string Type { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
+    public bool IsScoopable { get; set; }
 }

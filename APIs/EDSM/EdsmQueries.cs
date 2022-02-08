@@ -33,8 +33,8 @@ public class EdsmQueries : QueriesBase
     {
         const string apiURL = ApiConstants.edsmSystemsinSphere;
         string query =
-        $"?systemName={Uri.EscapeDataString(systemName)}&radius={distance.ToString()}&showPrimaryStar=1&showInformation=1&showCoordinates=1";
+        $"?systemName={Uri.EscapeDataString(systemName)}&radius={distance}&showPrimaryStar=1&showInformation=1&showCoordinates=1";
 
-        return (await GetFromApi<IEnumerable<SphereSystem>>(apiURL + query)).Where(x => x.distance > 0);
+        return (await GetFromApi<IEnumerable<SphereSystem>>(apiURL + query)).Where(x => x.Distance > 0);
     }
 }

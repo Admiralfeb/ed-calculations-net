@@ -20,7 +20,7 @@ public static class InaraLinkBuilder
 
     public static string BuildFleetCarrierSearchString(string carrierId)
     {
-        Regex carrierExp = new Regex(@"^[A-Z0-9]{3}-[A-Z0-9]{3}$");
+        Regex carrierExp = new(@"^[A-Z0-9]{3}-[A-Z0-9]{3}$");
         if (!carrierExp.IsMatch(carrierId.ToUpper()))
         {
             throw new ArgumentException("CarrierId must be in format '###-###' where # is a letter or number");

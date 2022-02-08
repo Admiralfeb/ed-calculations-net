@@ -14,7 +14,7 @@ public class GetStationsInSystemAsync
     [Fact]
     public async void ShouldCallUsingSystemProvided()
     {
-        var expected = new SystemStations() { name = "Arugbal" };
+        var expected = new SystemStations() { Name = "Arugbal" };
         var json = JsonSerializer.Serialize(expected);
 
         HttpClient httpClient = MockClient.GenerateMockClientWithData(json);
@@ -23,8 +23,8 @@ public class GetStationsInSystemAsync
 
         var response = await queries.GetStationsInSystemAsync("Arugbal");
 
-        Assert.Equal(expected.name, response.name);
-        Assert.Equal(0, response.id);
+        Assert.Equal(expected.Name, response.Name);
+        Assert.Equal(0, response.Id);
     }
 
     [Fact]

@@ -12,9 +12,11 @@ internal static class MockClient
 {
     internal static HttpClient GenerateMockClientWithData(string jsonValue)
     {
-        HttpResponseMessage httpResponse = new HttpResponseMessage();
-        httpResponse.StatusCode = System.Net.HttpStatusCode.OK;
-        httpResponse.Content = new StringContent(jsonValue, Encoding.UTF8, "application/json");
+        HttpResponseMessage httpResponse = new()
+        {
+            StatusCode = System.Net.HttpStatusCode.OK,
+            Content = new StringContent(jsonValue, Encoding.UTF8, "application/json")
+        };
 
         Mock<HttpMessageHandler> mockHandler = new();
         mockHandler.Protected()
@@ -30,9 +32,11 @@ internal static class MockClient
 
     internal static HttpClient GenerateMockClientWithNull()
     {
-        HttpResponseMessage httpResponse = new HttpResponseMessage();
-        httpResponse.StatusCode = System.Net.HttpStatusCode.OK;
-        httpResponse.Content = null;
+        HttpResponseMessage httpResponse = new()
+        {
+            StatusCode = System.Net.HttpStatusCode.OK,
+            Content = null
+        };
 
         Mock<HttpMessageHandler> mockHandler = new();
         mockHandler.Protected()
@@ -48,8 +52,10 @@ internal static class MockClient
 
     internal static HttpClient GenerateMockClientWithError()
     {
-        HttpResponseMessage httpResponse = new HttpResponseMessage();
-        httpResponse.StatusCode = System.Net.HttpStatusCode.NotFound;
+        HttpResponseMessage httpResponse = new()
+        {
+            StatusCode = System.Net.HttpStatusCode.NotFound
+        };
 
         Mock<HttpMessageHandler> mockHandler = new();
         mockHandler.Protected()
