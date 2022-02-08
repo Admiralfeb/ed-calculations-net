@@ -11,9 +11,9 @@ public abstract class QueriesBase
     {
         T? response = await Http.GetFromJsonAsync<T>(url);
 
-        if (response != null)
-            return response;
-        else
-            throw new NullDataException("Bodies is null");
+        if (response == null)
+            throw new NullDataException($"Data from '{url}' is null");
+
+        return response;
     }
 }
