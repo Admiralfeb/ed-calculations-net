@@ -8,12 +8,6 @@ public class MassacrePossibility
     public float Distance { get; set; }
     public IEnumerable<string> MissionSystems { get; set; }
 
-    public MassacrePossibility(string systemName, float distance, IEnumerable<string> missionSystems)
-    {
-        this.SystemName = systemName;
-        this.Distance = distance;
-        this.MissionSystems = missionSystems;
-    }
     public MassacrePossibility(SphereSystem system, IEnumerable<SphereSystem> closeSystems)
     {
         this.SystemName = system.Name;
