@@ -4,7 +4,9 @@ namespace EDCalculations.Functions;
 
 public static class InaraLinkBuilder
 {
+#pragma warning disable S1075
     private const string inaraBaseUrl = "https://inara.cz";
+#pragma warning restore S1075
 
     public static string BuildSystemSearchString(string system)
     {

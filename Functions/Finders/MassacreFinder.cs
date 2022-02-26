@@ -1,4 +1,6 @@
 using System.Text.Json;
+using System.Threading;
+using System.Threading.Tasks;
 
 using EDCalculations.APIs.EDSM;
 using EDCalculations.APIs.EDSM.Models;
@@ -20,11 +22,17 @@ public class MassacreFinder
         var systemList = await edsm.GetSystemsinSphereAsync(systemName, range);
         systemList = systemList.Where(x => x.Information != null);
 
+        cancelToken?.ThrowIfCancellationRequested();
+
         progress?.Report($"Retrieving Body Information for {systemList.Count()} systems");
         systemList = await GetSystemsWithRingsAsync(systemList);
 
+        cancelToken?.ThrowIfCancellationRequested();
+
         progress?.Report($"Retrieving Faction Information for {systemList.Count()} systems");
         systemList = await GetSystemsWithAnarchyFactionAsync(systemList);
+
+        cancelToken?.ThrowIfCancellationRequested();
 
         var possibilities = await FinalizePossibilitiesAsync(systemList, progress);
         progress?.Report($"Process complete: {possibilities.Count()} possible massacre systems.");
