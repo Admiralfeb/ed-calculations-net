@@ -4,6 +4,10 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageId>UnitedSystemsCooperative.EDCalculations.APIs</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Admiralfeb</Authors>
+    <RepositoryUrl>https://github.com/Admiralfeb/ed-calculations-net</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
