@@ -1,10 +1,13 @@
-﻿using EDCalculations.APIs.EDSM.Models;
+﻿using UnitedSystemsCooperative.Utils.EDCalc.APIs.EDSM.Models;
 
+namespace UnitedSystemsCooperative.Utils.EDCalc.APIs.EDSM;
 
-namespace EDCalculations.APIs.EDSM;
 public class EdsmQueries : QueriesBase
 {
-    public EdsmQueries(HttpClient client) : base(client) { }
+    public EdsmQueries(HttpClient client) : base(client)
+    {
+    }
+
     public async Task<SystemBodies> GetBodiesInSystemAsync(string systemName)
     {
         const string apiURL = ApiConstants.edsmBodies;
@@ -33,7 +36,7 @@ public class EdsmQueries : QueriesBase
     {
         const string apiURL = ApiConstants.edsmSystemsinSphere;
         string query =
-        $"?systemName={Uri.EscapeDataString(systemName)}&radius={distance}&showPrimaryStar=1&showInformation=1&showCoordinates=1";
+            $"?systemName={Uri.EscapeDataString(systemName)}&radius={distance}&showPrimaryStar=1&showInformation=1&showCoordinates=1";
 
         return (await GetFromApi<IEnumerable<SphereSystem>>(apiURL + query)).Where(x => x.Distance > 0);
     }

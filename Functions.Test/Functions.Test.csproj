@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
+
+    <RootNamespace>UnitedSystemsCooperative.Utils.EDCalc.Functions.Test</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

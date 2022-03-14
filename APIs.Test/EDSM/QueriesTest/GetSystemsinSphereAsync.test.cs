@@ -2,10 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
-
-using EDCalculations.APIs.EDSM;
-using EDCalculations.APIs.EDSM.Models;
-
+using UnitedSystemsCooperative.Utils.EDCalc.APIs.EDSM;
+using UnitedSystemsCooperative.Utils.EDCalc.APIs.EDSM.Models;
+using UnitedSystemsCooperative.Utils.EDCalc.APIs.Test;
 using Xunit;
 
 namespace EDCalculations.APIs.Test.EDSM.QueriesTest;
@@ -15,7 +14,7 @@ public class GetSystemsinSphereAsync
     [Fact]
     public async void ShouldCallUsingSystemProvided()
     {
-        var expected = new List<SphereSystem>() { new SphereSystem() { Name = "Arugbal", Distance = 50 } };
+        var expected = new List<SphereSystem>() {new SphereSystem() {Name = "Arugbal", Distance = 50}};
         var json = JsonSerializer.Serialize(expected);
 
         HttpClient httpClient = MockClient.GenerateMockClientWithData(json);
@@ -35,6 +34,7 @@ public class GetSystemsinSphereAsync
 
         var queries = new EdsmQueries(httpClient);
 
-        await Assert.ThrowsAsync<HttpRequestException>(async () => await queries.GetSystemsinSphereAsync("Issues Abound", 20));
+        await Assert.ThrowsAsync<HttpRequestException>(async () =>
+            await queries.GetSystemsinSphereAsync("Issues Abound", 20));
     }
 }

@@ -1,22 +1,21 @@
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
+using UnitedSystemsCooperative.Utils.EDCalc.APIs.EDSM;
+using UnitedSystemsCooperative.Utils.EDCalc.APIs.EDSM.Models;
+using UnitedSystemsCooperative.Utils.EDCalc.Functions.Models;
 
-using EDCalculations.APIs.EDSM;
-using EDCalculations.APIs.EDSM.Models;
-using EDCalculations.Functions.Models;
-
-namespace EDCalculations.Functions.Finders;
+namespace UnitedSystemsCooperative.Utils.EDCalc.Functions.Finders;
 
 public class MassacreFinder
 {
     private readonly EdsmQueries edsm;
+
     public MassacreFinder(HttpClient client)
     {
         edsm = new EdsmQueries(client);
     }
 
-    public async Task<string> FindMassacreSystemPossibilitiesAsync(string systemName, int range, IProgress<string>? progress, CancellationToken? cancelToken)
+    public async Task<string> FindMassacreSystemPossibilitiesAsync(string systemName, int range,
+        IProgress<string>? progress, CancellationToken? cancelToken)
     {
         progress?.Report("Retrieving Systems");
         var systemList = await edsm.GetSystemsinSphereAsync(systemName, range);
@@ -50,10 +49,12 @@ public class MassacreFinder
             if (systemBodies.Any(x => x.Rings != null))
                 hasRingsList = hasRingsList.Append(system);
         }
+
         return hasRingsList;
     }
 
-    private async Task<IEnumerable<SphereSystem>> GetSystemsWithAnarchyFactionAsync(IEnumerable<SphereSystem> systemList)
+    private async Task<IEnumerable<SphereSystem>> GetSystemsWithAnarchyFactionAsync(
+        IEnumerable<SphereSystem> systemList)
     {
         IEnumerable<SphereSystem> hasAnarchyList = new List<SphereSystem>();
         foreach (var system in systemList)
@@ -62,10 +63,12 @@ public class MassacreFinder
             if (systemFactionInfo.Factions?.Count(x => x.Government.ToUpper() == "ANARCHY") > 0)
                 hasAnarchyList = hasAnarchyList.Append(system);
         }
+
         return hasAnarchyList;
     }
 
-    private async Task<IEnumerable<MassacrePossibility>> FinalizePossibilitiesAsync(IEnumerable<SphereSystem> systemList, IProgress<string>? progress)
+    private async Task<IEnumerable<MassacrePossibility>> FinalizePossibilitiesAsync(
+        IEnumerable<SphereSystem> systemList, IProgress<string>? progress)
     {
         IEnumerable<MassacrePossibility> possibilities = new List<MassacrePossibility>();
         foreach (var (system, i) in systemList.Select((value, i) => (value, i)))
@@ -78,6 +81,7 @@ public class MassacreFinder
                 possibilities = possibilities.Append(possibility);
             }
         }
+
         return possibilities;
     }
 

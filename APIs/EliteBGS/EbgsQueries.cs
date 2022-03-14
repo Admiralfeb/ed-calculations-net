@@ -1,12 +1,12 @@
-using System.Net.Http.Json;
+using UnitedSystemsCooperative.Utils.EDCalc.APIs.EliteBGS.Models;
 
-using EDCalculations.APIs.EliteBgs.Models;
-
-namespace EDCalculations.APIs.EliteBgs;
+namespace UnitedSystemsCooperative.Utils.EDCalc.APIs.EliteBGS;
 
 public class EbgsQueries : QueriesBase
 {
-    public EbgsQueries(HttpClient client) : base(client) { }
+    public EbgsQueries(HttpClient client) : base(client)
+    {
+    }
 
     public async Task<EbgsFactionsV5> GetFactionsAsync(string factionName)
     {

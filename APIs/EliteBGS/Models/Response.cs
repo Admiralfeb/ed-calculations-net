@@ -1,4 +1,4 @@
-namespace EDCalculations.APIs.EliteBgs.Models;
+namespace UnitedSystemsCooperative.Utils.EDCalc.APIs.EliteBGS.Models;
 
 public class Response<T>
 {

@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace EDCalculations.Functions.Test;
+namespace UnitedSystemsCooperative.Utils.EDCalc.Functions.Test;
 
 public class InaraLinkBuilderTest
 {

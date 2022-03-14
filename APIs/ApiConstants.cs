@@ -1,4 +1,4 @@
-namespace EDCalculations.APIs;
+namespace UnitedSystemsCooperative.Utils.EDCalc.APIs;
 
 internal static class ApiConstants
 {

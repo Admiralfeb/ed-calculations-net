@@ -2,11 +2,10 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
 using Moq;
 using Moq.Protected;
 
-namespace EDCalculations.APIs.Test;
+namespace UnitedSystemsCooperative.Utils.EDCalc.APIs.Test;
 
 internal static class MockClient
 {
@@ -20,10 +19,10 @@ internal static class MockClient
 
         Mock<HttpMessageHandler> mockHandler = new();
         mockHandler.Protected()
-        .Setup<Task<HttpResponseMessage>>("SendAsync",
-        ItExpr.IsAny<HttpRequestMessage>(),
-        ItExpr.IsAny<CancellationToken>())
-        .ReturnsAsync(httpResponse);
+            .Setup<Task<HttpResponseMessage>>("SendAsync",
+                ItExpr.IsAny<HttpRequestMessage>(),
+                ItExpr.IsAny<CancellationToken>())
+            .ReturnsAsync(httpResponse);
 
         HttpClient httpClient = new(mockHandler.Object);
 
@@ -40,10 +39,10 @@ internal static class MockClient
 
         Mock<HttpMessageHandler> mockHandler = new();
         mockHandler.Protected()
-        .Setup<Task<HttpResponseMessage>>("SendAsync",
-        ItExpr.IsAny<HttpRequestMessage>(),
-        ItExpr.IsAny<CancellationToken>())
-        .ReturnsAsync(httpResponse);
+            .Setup<Task<HttpResponseMessage>>("SendAsync",
+                ItExpr.IsAny<HttpRequestMessage>(),
+                ItExpr.IsAny<CancellationToken>())
+            .ReturnsAsync(httpResponse);
 
         HttpClient httpClient = new(mockHandler.Object);
 
@@ -59,10 +58,10 @@ internal static class MockClient
 
         Mock<HttpMessageHandler> mockHandler = new();
         mockHandler.Protected()
-        .Setup<Task<HttpResponseMessage>>("SendAsync",
-        ItExpr.IsAny<HttpRequestMessage>(),
-        ItExpr.IsAny<CancellationToken>())
-        .ReturnsAsync(httpResponse);
+            .Setup<Task<HttpResponseMessage>>("SendAsync",
+                ItExpr.IsAny<HttpRequestMessage>(),
+                ItExpr.IsAny<CancellationToken>())
+            .ReturnsAsync(httpResponse);
 
         HttpClient httpClient = new(mockHandler.Object);
 

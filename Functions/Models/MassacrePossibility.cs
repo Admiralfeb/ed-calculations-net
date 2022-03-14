@@ -1,6 +1,6 @@
-using EDCalculations.APIs.EDSM.Models;
+using UnitedSystemsCooperative.Utils.EDCalc.APIs.EDSM.Models;
 
-namespace EDCalculations.Functions.Models;
+namespace UnitedSystemsCooperative.Utils.EDCalc.Functions.Models;
 
 public class MassacrePossibility
 {

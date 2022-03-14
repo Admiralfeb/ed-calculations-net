@@ -1,10 +1,8 @@
-using System;
 using System.Net.Http;
 using System.Text.Json;
-
-using EDCalculations.APIs.EDSM;
-using EDCalculations.APIs.EDSM.Models;
-
+using UnitedSystemsCooperative.Utils.EDCalc.APIs.EDSM;
+using UnitedSystemsCooperative.Utils.EDCalc.APIs.EDSM.Models;
+using UnitedSystemsCooperative.Utils.EDCalc.APIs.Test;
 using Xunit;
 
 namespace EDCalculations.APIs.Test.EDSM.QueriesTest;
@@ -14,7 +12,7 @@ public class GetBodiesInSystemAsync
     [Fact]
     public async void ShouldCallUsingSystemProvided()
     {
-        var expected = new SystemBodies() { Name = "Arugbal" };
+        var expected = new SystemBodies() {Name = "Arugbal"};
         var json = JsonSerializer.Serialize(expected);
 
         HttpClient httpClient = MockClient.GenerateMockClientWithData(json);
@@ -34,6 +32,7 @@ public class GetBodiesInSystemAsync
 
         var queries = new EdsmQueries(httpClient);
 
-        await Assert.ThrowsAsync<HttpRequestException>(async () => await queries.GetBodiesInSystemAsync("Issues Abound"));
+        await Assert.ThrowsAsync<HttpRequestException>(
+            async () => await queries.GetBodiesInSystemAsync("Issues Abound"));
     }
 }

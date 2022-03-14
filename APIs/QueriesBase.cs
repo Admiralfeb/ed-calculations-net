@@ -1,6 +1,6 @@
 using System.Net.Http.Json;
 
-namespace EDCalculations.APIs;
+namespace UnitedSystemsCooperative.Utils.EDCalc.APIs;
 
 public abstract class QueriesBase
 {

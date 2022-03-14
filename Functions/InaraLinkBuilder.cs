@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace EDCalculations.Functions;
+namespace UnitedSystemsCooperative.Utils.EDCalc.Functions;
 
 public static class InaraLinkBuilder
 {
@@ -37,5 +37,4 @@ public static class InaraLinkBuilder
         string searchParam = Uri.EscapeDataString(factionName);
         return $"{inaraBaseUrl}/minorfaction/?search={searchParam}";
     }
-
 }

@@ -1,4 +1,4 @@
-namespace EDCalculations.APIs.EDSM.Models;
+namespace UnitedSystemsCooperative.Utils.EDCalc.APIs.EDSM.Models;
 
 public class SphereSystem
 {
@@ -9,7 +9,6 @@ public class SphereSystem
     public bool CoordsLocked { get; set; }
     public SysInfo Information { get; set; } = new();
     public PrimaryStar PrimaryStar { get; set; } = new();
-
 }
 
 public class Coordinants
@@ -18,7 +17,6 @@ public class Coordinants
     public float Y { get; set; }
     public float Z { get; set; }
 }
-
 
 public class SysInfo
 {

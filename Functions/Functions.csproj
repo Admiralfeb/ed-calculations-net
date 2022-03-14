@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\APIs\EDCalculations.APIs.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="SonarAnalyzer.CSharp" Version="8.35.0.42613">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\APIs\EDCalculations.APIs.csproj"/>
   </ItemGroup>
 
   <PropertyGroup>
@@ -19,6 +19,8 @@
     <Version>1.0.0</Version>
     <Authors>Admiralfeb</Authors>
     <RepositoryUrl>https://github.com/Admiralfeb/ed-calculations-net</RepositoryUrl>
+    <AssemblyName>EDCalc.Functions</AssemblyName>
+    <RootNamespace>UnitedSystemsCooperative.Utils.EDCalc.Functions</RootNamespace>
   </PropertyGroup>
 
 </Project>

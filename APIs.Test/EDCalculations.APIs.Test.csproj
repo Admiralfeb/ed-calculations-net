@@ -1,10 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
+      <TargetFramework>net6.0</TargetFramework>
+      <Nullable>enable</Nullable>
 
-    <IsPackable>false</IsPackable>
+      <IsPackable>false</IsPackable>
+
+      <RootNamespace>UnitedSystemsCooperative.Utils.EDCalc.APIs.Test</RootNamespace>
+
+      <AssemblyName>EDCalc.APIs.Test</AssemblyName>
   </PropertyGroup>
 
     <ItemGroup>

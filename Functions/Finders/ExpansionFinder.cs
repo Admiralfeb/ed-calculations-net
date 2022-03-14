@@ -1,6 +1,6 @@
-using EDCalculations.APIs.EDSM;
+using UnitedSystemsCooperative.Utils.EDCalc.APIs.EDSM;
 
-namespace EDCalculations.Functions.Finders;
+namespace UnitedSystemsCooperative.Utils.EDCalc.Functions.Finders;
 
 public class ExpansionFinder
 {

@@ -1,4 +1,4 @@
-namespace EDCalculations.APIs.EliteBgs.Models;
+namespace UnitedSystemsCooperative.Utils.EDCalc.APIs.EliteBGS.Models;
 
 public class EbgsFactionsV5
 {
@@ -34,6 +34,7 @@ public class EbgsStateActiveV5
 {
     public string State { get; set; } = string.Empty;
 }
+
 public class EbgsStateV5
 {
     public string State { get; set; } = string.Empty;

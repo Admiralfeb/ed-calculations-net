@@ -1,4 +1,4 @@
-namespace EDCalculations.APIs.EDSM.Models;
+namespace UnitedSystemsCooperative.Utils.EDCalc.APIs.EDSM.Models;
 
 public class SystemFactionInfo
 {
