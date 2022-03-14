@@ -79,4 +79,4 @@ jobs:
       - name: Pack Nuget
         run: dotnet pack -c Release
       - name: Push Nuget
-        run: dotnet nuget push "**/Release/*.nupkg" --api-key ${{ secrets.NUGET_KEY }} --skip-duplicate
+        run: dotnet nuget push "**/Release/*.nupkg" --api-key ${{ secrets.NUGET_KEY }} --skip-duplicate --source "https://api.nuget.org/v3/index.json"
